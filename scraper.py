@@ -87,7 +87,6 @@ async def run_scraper(pages=1, limit=None):
         
         tasks = [sem_task(url) for url in urls]
         results = await asyncio.gather(*tasks)
-        # -----------------------
 
         await browser.close()
         return pd.DataFrame([r for r in results if r])
