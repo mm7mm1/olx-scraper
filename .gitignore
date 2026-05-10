@@ -1,0 +1,47 @@
+# === SECRETS & KEYS ===
+.env
+credentials.json
+tokens.json
+*.pem
+*.crt
+
+# === DATA & TABLES ===
+listings.csv
+listings_*.csv
+*.xlsx
+
+# === PYTHON ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+ENV/
+env/
+.python-version
+*.egg-info/
+dist/
+build/
+
+# === SELENIUM & BROWSERS ===
+scoped_dir*
+chromedriver
+ghostdriver.log
+chromedriver.log
+
+# === IDE & TOOLS ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === OS ===
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+desktop.ini
+
+# === LOGS ===
+*.log
