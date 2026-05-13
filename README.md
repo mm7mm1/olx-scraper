@@ -21,6 +21,10 @@
 - **Посилання на Google Sheet**: [Google Sheets](https://docs.google.com/spreadsheets/d/1JhhJJiNZH7uMk3_BsNMfgja1HvTiWapxGlSepKkYOcw/edit?usp=sharing)
 - **Дані, що парсяться**: Ціна, поверх, поверховість, населений пункт, область, площа та URL оголошення.
 
+## 
+![OLX](docs/olx.png)
+![Google Sheets](docs/sheet.png)
+
 ## Налаштування та запуск
 
 ### 1. Підготовка Google Cloud (API)
