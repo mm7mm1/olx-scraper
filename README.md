@@ -3,10 +3,6 @@
 Reads apartment listings from OLX.ua into SQLite and keeps every sighting, so prices can be
 compared over time. Exports to CSV or Google Sheets.
 
-> **Status, 25 Nov 2026.** The parser was checked on real pages saved that day and the full flow
-> is covered by tests. The live run was answered with HTTP 403 and stopped, as designed. This
-> project does not try to get around a refusal.
-
 ## What it guarantees
 
 1. **The price is the seller's.** Search results and JSON-LD convert every price to one currency:
@@ -82,6 +78,8 @@ photos and real links removed. `test_browser.py` runs real Chromium against a lo
   missed, so absence from a run does not mean it was removed.
 - Seller names, phones, descriptions and photos are not collected.
 - It only reads paths allowed by `robots.txt`. Check OLX's terms before using it.
+- OLX can refuse automated browsers, and in November 2026 it answered with HTTP 403. The
+  scraper then stops and marks the run as failed, without disguising itself.
 
 ## License
 
