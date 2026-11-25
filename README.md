@@ -1,70 +1,93 @@
-# Асинхронний скрапер нерухомості OLX.ua
-Даний проєкт є реалізуванням парсингу даних з відкритих джерел.
+# OLX.ua apartment observer
 
-## Опис рішення
-Реалізовано **асинхронне рішення** на базі бібліотеки **Playwright**. Це дозволяє значно прискорити збір даних завдяки паралельній обробці сторінок.
+Reads apartment listings from OLX.ua into SQLite and keeps every sighting, so prices can be
+compared over time. Exports to CSV or Google Sheets.
 
-### Технологічний стек:
-- **Python 3.14** (використано для розробки)
-- **Playwright (Async)** — для взаємодії з динамічним контентом та виконання JavaScript на сторінці.
-- **Pandas** — для структурування та первинної обробки даних.
-- **Google Sheets API (gspread)** — для автоматичного експорту результатів у хмару.
-- **python-dotenv** — для безпечного керування секретами.
+> **Status, 25 Nov 2026.** The parser was checked on real pages saved that day and the full flow
+> is covered by tests. The live run was answered with HTTP 403 and stopped, as designed. This
+> project does not try to get around a refusal.
 
-## Важливі моменти
-- [x] **Асинхронність**: Використано `asyncio.gather` та семафори для контролю навантаження.
-- [x] **JSON-LD**: Ціна, валюта, заголовок і категорія беруться зі структурованих даних `schema.org` на сторінці — це стабільніше за парсинг верстки зі згенерованими CSS-класами.
-- [x] **Надійність**: Ретраї з паузою при помилках, зупинка пагінації при відсутності нових оголошень, резервне збереження в CSV перед завантаженням у Sheets.
-- [x] **Безпека**: Всі чутливі дані (credentials, .env) винесені в ігнорування Git.
-- [x] **Структура**: Дані очищуються від зайвих символів та конвертуються у відповідні типи (int, float).
+## What it guarantees
 
-## Результати
-- **Посилання на Google Sheet**: [Google Sheets](https://docs.google.com/spreadsheets/d/1JhhJJiNZH7uMk3_BsNMfgja1HvTiWapxGlSepKkYOcw/edit?usp=sharing)
-- **Дані, що парсяться**: URL, заголовок, тип угоди (оренда/продаж), ціна, валюта, місто, район, область, кількість кімнат, поверх, поверховість, площа, ціна за м² та час збору.
+1. **The price is the seller's.** Search results and JSON-LD convert every price to one currency:
+   an ad for `59 900 $` appears there as `2 717 016 грн`, so its price would seem to change with
+   the exchange rate. The price is read from the label on the ad's own page. An unknown label is
+   never guessed.
+2. **Nothing disappears silently.** A listing whose price cannot be read stays in the results with
+   a named reason in `gaps`. A run cannot end as `done` with an unexplained missing price.
+3. **An empty run is a failure**, and so is a run with over 20% gaps. The exit code is 0 only for
+   a `done` run, and a failed run never replaces the exported data.
+4. **A stop loses nothing.** Each page and price is committed as it is read. Ctrl-C, SIGTERM, a
+   block or a crash leaves a closed run. After `kill -9`, the next run closes it.
+5. **It stops when told to.** One request per second, `Retry-After` respected, immediate stop on
+   401/403, and a stop after five unreadable ads in a row, which means the site has changed.
 
-## 
-![OLX](docs/olx.png)
-![Google Sheets](docs/sheet.png)
+## How it works
 
-## Налаштування та запуск
+```
+search pages -> observations (committed per page)
+ad pages     -> native price, or a named gap (committed per ad)
+verdict      -> done | failed + reason
+```
 
-### 1. Підготовка Google Cloud (API)
-Для роботи з таблицями необхідно отримати доступ:
-1. Відкрити [Google Cloud Console](https://console.cloud.google.com/).
-2. Створити новий проєкт.
-3. У розділі **APIs & Services** увімкнути `Google Sheets API` та `Google Drive API`.
-4. Перейти в **IAM & Admin** → **Service Accounts** → Створи сервісний акаунт.
-5. Відкрити створений акаунт → **Keys** → **Add Key** → **Create new key (JSON)**.
-6. Зберегти завантажений файл як `credentials.json` у кореневу папку проєкту.
-7. **Важливо**: Відкрити свій Google Sheet, натисни **Поділитися** та додати email зі свого JSON-файлу (поле `client_email`) з правами **Редактор**.
+| File | Role |
+| --- | --- |
+| `parse.py` | pages to typed rows, using the JSON embedded in the page; no I/O |
+| `fetch.py` | pacing, retries, when to stop |
+| `browser.py` | plain headless Chromium; loads the document only, no scripts or images |
+| `store.py`, `schema.sql` | SQLite, constraints, single-run lock |
+| `scrape.py` | one run from start to verdict |
+| `export.py`, `cli.py` | CSV, Google Sheets, command line |
 
-### 2. Налаштування оточення
-1. Створити файл `.env` у папці проєкту.
-2. Додати наступні змінні:
-    ```bash
-   GOOGLE_CREDENTIALS_PATH=/шлях/до/твого/credentials.json
-   GOOGLE_SHEET_ID=ідентифікатор_твоєї_таблиці
-3. Встановлення залежностей
-    ```bash
-    pip install -r requirements.txt
-    playwright install chromium
-4. Запуск
-    ```bash
-    python main.py --pages 2 --limit 50
-    ```
-    Параметри:
-    - `--pages N` — скільки сторінок каталогу обійти (за замовчуванням 1);
-    - `--limit N` — максимум оголошень для парсингу;
-    - `--csv шлях.csv` — куди зберегти резервний CSV (за замовчуванням `listings.csv`);
-    - `--no-upload` — тільки CSV, без завантаження в Google Sheets.
+`price_changes` compares each listing's last two sightings, not two runs: a listing that drops out
+of search for a few days still yields its change when it returns. Changing the currency does not
+count as a price change.
 
+## Usage
+
+Needs [uv](https://docs.astral.sh/uv/).
+
+```bash
+uv sync
+uv run playwright install chromium
+uv run olx-scraper scrape --pages 2 --limit 70
+uv run olx-scraper export listings --csv listings.csv
+uv run olx-scraper export price-changes --csv changes.csv
+```
+
+For Google Sheets, install the extra, share the sheet with your service account, fill in `.env`
+(see `.env.example`) and run:
+
+```bash
+uv sync --extra sheets
+uv run --env-file .env olx-scraper export listings --sheet
+```
+
+The export overwrites the first tab in one call and trims the rest afterwards, so a failed write
+leaves the old rows in place.
+
+## Checks
+
+```bash
+uv run ruff check . && uv run mypy && uv run pytest
+```
+
+Tests do not contact OLX. Fixtures keep the recorded page structure with people, descriptions,
+photos and real links removed. `test_browser.py` runs real Chromium against a local server.
+
+## Limits
+
+- OLX shows at most 25 search pages per query; use a narrower `--category` for more.
+- Listings move between pages while they are read. Repeats are stored once, but a listing can be
+  missed, so absence from a run does not mean it was removed.
+- Seller names, phones, descriptions and photos are not collected.
+- It only reads paths allowed by `robots.txt`. Check OLX's terms before using it.
 
 ## License
-This project is licensed under the MIT License. You are free to use, modify, and share this project with proper attribution.
 
+MIT
 
-## About me 
-Hey, my name is Anastasiia, I am a Data Engineer wanting to achieve high results.
-<br>
-I'm open to feedback and would love to discuss the architectural choices I made in this project! <br>
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anastasiia-kukhar-mm7mm1/)
+## About me
+
+Hey, my name is Anastasiia, I am a Data Engineer. I'm open to feedback and would love to discuss
+the architectural choices in this project: [LinkedIn](https://www.linkedin.com/in/anastasiia-kukhar-mm7mm1/).

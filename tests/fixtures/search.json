@@ -1,0 +1,393 @@
+{
+ "listing": {
+  "listing": {
+   "pageNumber": 0,
+   "totalPages": 25,
+   "totalElements": 1000,
+   "ads": [
+    {
+     "category": {
+      "id": 1758,
+      "type": "real_estate",
+      "_nodeId": "Y2F0ZWdvcnk6MTc1OA=="
+     },
+     "isPromoted": true,
+     "createdTime": "2026-11-24T15:00:45+02:00",
+     "isActive": true,
+     "status": "active",
+     "params": [
+      {
+       "key": "floor",
+       "name": "Поверх",
+       "type": "input",
+       "value": "3",
+       "normalizedValue": "3"
+      },
+      {
+       "key": "total_floors",
+       "name": "Поверховість",
+       "type": "input",
+       "value": "6",
+       "normalizedValue": "6"
+      },
+      {
+       "key": "total_area",
+       "name": "Загальна площа",
+       "type": "input",
+       "value": "27.44 м²",
+       "normalizedValue": "27.44"
+      },
+      {
+       "key": "number_of_rooms_string",
+       "name": "Кількість кімнат",
+       "type": "select",
+       "value": "1 кімната",
+       "normalizedValue": "odnokomnatnye"
+      }
+     ],
+     "price": {
+      "budget": false,
+      "free": false,
+      "exchange": false,
+      "displayValue": "1 157 566.76 грн.",
+      "regularPrice": {
+       "value": 1157566,
+       "currencyCode": "UAH",
+       "currencySymbol": "грн.",
+       "negotiable": false,
+       "priceFormatConfig": {
+        "decimalSeparator": ".",
+        "thousandsSeparator": " "
+       }
+      }
+     },
+     "location": {
+      "cityName": "Ірпінь",
+      "cityId": 295,
+      "cityNormalizedName": "irpen",
+      "regionName": "Київська область",
+      "regionId": 25,
+      "regionNormalizedName": "ko",
+      "districtName": null,
+      "districtId": 0,
+      "pathName": "Київська область, Ірпінь"
+     },
+     "searchReason": "promoted",
+     "id": 1001,
+     "title": "Квартира 1",
+     "url": "https://www.olx.ua/d/uk/obyavlenie/kvartira-ID1.html"
+    },
+    {
+     "category": {
+      "id": 1758,
+      "type": "real_estate",
+      "_nodeId": "Y2F0ZWdvcnk6MTc1OA=="
+     },
+     "isPromoted": true,
+     "createdTime": "2026-10-19T16:19:22+03:00",
+     "isActive": true,
+     "status": "active",
+     "params": [
+      {
+       "key": "floor",
+       "name": "Поверх",
+       "type": "input",
+       "value": "2",
+       "normalizedValue": "2"
+      },
+      {
+       "key": "total_floors",
+       "name": "Поверховість",
+       "type": "input",
+       "value": "4",
+       "normalizedValue": "4"
+      },
+      {
+       "key": "total_area",
+       "name": "Загальна площа",
+       "type": "input",
+       "value": "65 м²",
+       "normalizedValue": "65"
+      },
+      {
+       "key": "number_of_rooms_string",
+       "name": "Кількість кімнат",
+       "type": "select",
+       "value": "2 кімнати",
+       "normalizedValue": "dvuhkomnatnye"
+      }
+     ],
+     "price": {
+      "budget": false,
+      "free": false,
+      "exchange": false,
+      "displayValue": "5 261 667.08 грн.",
+      "regularPrice": {
+       "value": 5261667,
+       "currencyCode": "UAH",
+       "currencySymbol": "грн.",
+       "negotiable": false,
+       "priceFormatConfig": {
+        "decimalSeparator": ".",
+        "thousandsSeparator": " "
+       }
+      }
+     },
+     "location": {
+      "cityName": "Брюховичі",
+      "cityId": 37881,
+      "cityNormalizedName": "bryuhovichi",
+      "regionName": "Львівська область",
+      "regionId": 5,
+      "regionNormalizedName": "lv",
+      "districtName": null,
+      "districtId": 0,
+      "pathName": "Львівська область, Брюховичі"
+     },
+     "searchReason": "promoted",
+     "id": 1002,
+     "title": "Квартира 2",
+     "url": "https://www.olx.ua/d/uk/obyavlenie/kvartira-ID2.html"
+    },
+    {
+     "category": {
+      "id": 1760,
+      "type": "real_estate",
+      "_nodeId": "Y2F0ZWdvcnk6MTc2MA=="
+     },
+     "isPromoted": true,
+     "createdTime": "2026-11-19T09:49:07+02:00",
+     "isActive": true,
+     "status": "active",
+     "params": [
+      {
+       "key": "floor",
+       "name": "Поверх",
+       "type": "input",
+       "value": "1",
+       "normalizedValue": "1"
+      },
+      {
+       "key": "total_floors",
+       "name": "Поверховість",
+       "type": "input",
+       "value": "6",
+       "normalizedValue": "6"
+      },
+      {
+       "key": "total_area",
+       "name": "Загальна площа",
+       "type": "input",
+       "value": "47 м²",
+       "normalizedValue": "47"
+      },
+      {
+       "key": "number_of_rooms_string",
+       "name": "Кількість кімнат",
+       "type": "select",
+       "value": "1 кімната",
+       "normalizedValue": "odnokomnatnye"
+      }
+     ],
+     "price": {
+      "budget": false,
+      "free": false,
+      "exchange": false,
+      "displayValue": "29 999 грн.",
+      "regularPrice": {
+       "value": 29999,
+       "currencyCode": "UAH",
+       "currencySymbol": "грн.",
+       "negotiable": false,
+       "priceFormatConfig": {
+        "decimalSeparator": ".",
+        "thousandsSeparator": " "
+       }
+      }
+     },
+     "location": {
+      "cityName": "Черкаси",
+      "cityId": 145,
+      "cityNormalizedName": "cherkassy",
+      "regionName": "Черкаська область",
+      "regionId": 12,
+      "regionNormalizedName": "chk",
+      "districtName": null,
+      "districtId": 0,
+      "pathName": "Черкаська область, Черкаси"
+     },
+     "searchReason": "organic",
+     "id": 1003,
+     "title": "Квартира 3",
+     "url": "https://www.olx.ua/d/uk/obyavlenie/kvartira-ID3.html"
+    },
+    {
+     "category": {
+      "id": 1758,
+      "type": "real_estate",
+      "_nodeId": "Y2F0ZWdvcnk6MTc1OA=="
+     },
+     "isPromoted": true,
+     "createdTime": "2026-11-04T12:15:37+02:00",
+     "isActive": true,
+     "status": "active",
+     "params": [
+      {
+       "key": "floor",
+       "name": "Поверх",
+       "type": "input",
+       "value": "5",
+       "normalizedValue": "5"
+      },
+      {
+       "key": "total_floors",
+       "name": "Поверховість",
+       "type": "input",
+       "value": "7",
+       "normalizedValue": "7"
+      },
+      {
+       "key": "total_area",
+       "name": "Загальна площа",
+       "type": "input",
+       "value": "28.70 м²",
+       "normalizedValue": "28.7"
+      },
+      {
+       "key": "number_of_rooms_string",
+       "name": "Кількість кімнат",
+       "type": "select",
+       "value": "1 кімната",
+       "normalizedValue": "odnokomnatnye"
+      }
+     ],
+     "price": {
+      "budget": false,
+      "free": false,
+      "exchange": false,
+      "displayValue": "3 379 260.33 грн.",
+      "regularPrice": {
+       "value": 3379260,
+       "currencyCode": "UAH",
+       "currencySymbol": "грн.",
+       "negotiable": true,
+       "priceFormatConfig": {
+        "decimalSeparator": ".",
+        "thousandsSeparator": " "
+       }
+      }
+     },
+     "location": {
+      "cityName": "Львів",
+      "cityId": 176,
+      "cityNormalizedName": "lvov",
+      "regionName": "Львівська область",
+      "regionId": 5,
+      "regionNormalizedName": "lv",
+      "districtName": "Залізничний",
+      "districtId": 129,
+      "pathName": "Львівська область, Львів, Залізничний"
+     },
+     "searchReason": "organic",
+     "id": 1004,
+     "title": "Квартира 4",
+     "url": "https://www.olx.ua/d/uk/obyavlenie/kvartira-ID4.html"
+    },
+    {
+     "category": {
+      "id": 1760,
+      "type": "real_estate",
+      "_nodeId": "Y2F0ZWdvcnk6MTc2MA=="
+     },
+     "isPromoted": true,
+     "createdTime": "2026-11-17T17:28:22+02:00",
+     "isActive": true,
+     "status": "active",
+     "params": [
+      {
+       "key": "floor",
+       "name": "Поверх",
+       "type": "input",
+       "value": "10",
+       "normalizedValue": "10"
+      },
+      {
+       "key": "total_floors",
+       "name": "Поверховість",
+       "type": "input",
+       "value": "13",
+       "normalizedValue": "13"
+      },
+      {
+       "key": "total_area",
+       "name": "Загальна площа",
+       "type": "input",
+       "value": "45 м²",
+       "normalizedValue": "45"
+      },
+      {
+       "key": "number_of_rooms_string",
+       "name": "Кількість кімнат",
+       "type": "select",
+       "value": "1 кімната",
+       "normalizedValue": "odnokomnatnye"
+      }
+     ],
+     "price": {
+      "budget": false,
+      "free": false,
+      "exchange": false,
+      "displayValue": "12 000 грн.",
+      "regularPrice": {
+       "value": 12000,
+       "currencyCode": "UAH",
+       "currencySymbol": "грн.",
+       "negotiable": false,
+       "priceFormatConfig": {
+        "decimalSeparator": ".",
+        "thousandsSeparator": " "
+       }
+      }
+     },
+     "location": {
+      "cityName": "Одеса",
+      "cityId": 62,
+      "cityNormalizedName": "odessa",
+      "regionName": "Одеська область",
+      "regionId": 9,
+      "regionNormalizedName": "od",
+      "districtName": "Приморський",
+      "districtId": 89,
+      "pathName": "Одеська область, Одеса, Приморський"
+     },
+     "searchReason": "organic",
+     "id": 1005,
+     "title": "Квартира 5",
+     "url": "https://www.olx.ua/d/uk/obyavlenie/kvartira-ID5.html"
+    }
+   ]
+  }
+ },
+ "categories": {
+  "list": {
+   "1757": {
+    "id": 1757,
+    "label": "kvartiry",
+    "parentId": 1,
+    "path": "nedvizhimost/kvartiry"
+   },
+   "1758": {
+    "id": 1758,
+    "label": "prodazha-kvartir",
+    "parentId": 1757,
+    "path": "nedvizhimost/kvartiry/prodazha-kvartir"
+   },
+   "1760": {
+    "id": 1760,
+    "label": "dolgosrochnaya-arenda-kvartir",
+    "parentId": 1757,
+    "path": "nedvizhimost/kvartiry/dolgosrochnaya-arenda-kvartir"
+   }
+  }
+ }
+}

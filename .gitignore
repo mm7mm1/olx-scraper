@@ -8,6 +8,8 @@ tokens.json
 # === DATA & TABLES ===
 listings.csv
 listings_*.csv
+*.sqlite3*
+*.csv.tmp
 *.xlsx
 
 # === PYTHON ===
@@ -45,3 +47,8 @@ desktop.ini
 
 # === LOGS ===
 *.log
+
+# === CHECKS ===
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
