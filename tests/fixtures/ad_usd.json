@@ -1,0 +1,97 @@
+{
+ "ad": {
+  "ad": {
+   "category": {
+    "id": 1758,
+    "type": "real_estate",
+    "_nodeId": "Y2F0ZWdvcnk6MTc1OA=="
+   },
+   "isPromoted": true,
+   "createdTime": "2026-11-13T11:50:25+02:00",
+   "isActive": true,
+   "status": "active",
+   "params": [
+    {
+     "key": "floor",
+     "name": "Поверх",
+     "type": "input",
+     "value": "5",
+     "normalizedValue": "5"
+    },
+    {
+     "key": "total_floors",
+     "name": "Поверховість",
+     "type": "input",
+     "value": "9",
+     "normalizedValue": "9"
+    },
+    {
+     "key": "total_area",
+     "name": "Загальна площа",
+     "type": "input",
+     "value": "28 м²",
+     "normalizedValue": "28"
+    },
+    {
+     "key": "number_of_rooms_string",
+     "name": "Кількість кімнат",
+     "type": "select",
+     "value": "1 кімната",
+     "normalizedValue": "odnokomnatnye"
+    }
+   ],
+   "price": {
+    "budget": false,
+    "free": false,
+    "exchange": false,
+    "displayValue": "59 900 $",
+    "regularPrice": {
+     "value": 2717016,
+     "currencyCode": "UAH",
+     "currencySymbol": "грн.",
+     "negotiable": false,
+     "priceFormatConfig": {
+      "decimalSeparator": ".",
+      "thousandsSeparator": " "
+     }
+    }
+   },
+   "location": {
+    "cityName": "Київ",
+    "cityId": 268,
+    "cityNormalizedName": "kiev",
+    "regionName": "Київська область",
+    "regionId": 25,
+    "regionNormalizedName": "ko",
+    "districtName": "Подільський",
+    "districtId": 13,
+    "pathName": "Київська область, Київ, Подільський"
+   },
+   "id": 1001,
+   "title": "Квартира 1",
+   "url": "https://www.olx.ua/d/uk/obyavlenie/kvartira-ID1.html"
+  }
+ },
+ "categories": {
+  "list": {
+   "1757": {
+    "id": 1757,
+    "label": "kvartiry",
+    "parentId": 1,
+    "path": "nedvizhimost/kvartiry"
+   },
+   "1758": {
+    "id": 1758,
+    "label": "prodazha-kvartir",
+    "parentId": 1757,
+    "path": "nedvizhimost/kvartiry/prodazha-kvartir"
+   },
+   "1760": {
+    "id": 1760,
+    "label": "dolgosrochnaya-arenda-kvartir",
+    "parentId": 1757,
+    "path": "nedvizhimost/kvartiry/dolgosrochnaya-arenda-kvartir"
+   }
+  }
+ }
+}

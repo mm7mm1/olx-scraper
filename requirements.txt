@@ -1,5 +1,0 @@
-playwright==1.59.0
-gspread==6.2.1
-google-auth==2.49.2
-pandas==2.3.3
-python-dotenv==1.2.2

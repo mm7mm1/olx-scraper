@@ -1,0 +1,52 @@
+[project]
+name = "olx-scraper"
+version = "2.0.0"
+description = "Observes OLX.ua apartment listings over time: exact native prices, named gaps"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = ["playwright>=1.59,<1.60"]
+
+[project.optional-dependencies]
+sheets = ["gspread>=6.2,<7", "google-auth>=2.40,<3"]
+
+[project.scripts]
+olx-scraper = "olx_scraper.cli:main"
+
+[dependency-groups]
+dev = ["mypy>=1.15", "pytest>=8.3", "ruff>=0.11"]
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/olx_scraper"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "C90", "UP", "SIM", "RUF", "S", "PT", "DTZ", "PTH"]
+ignore = ["RUF001", "RUF002", "RUF003"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 8
+
+[tool.mypy]
+strict = true
+files = ["src", "tests"]
+
+[[tool.mypy.overrides]]
+module = ["gspread.*", "google.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers"
+filterwarnings = ["error"]
+markers = ["browser: needs Chromium (playwright install chromium)"]
+testpaths = ["tests"]
